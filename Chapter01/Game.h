@@ -7,6 +7,12 @@
 
 #include <SDL2/SDL.h>
 
+// Vector2 结构体仅存储 x 和 y 坐标
+struct Vector2 {
+    float x;
+    float y;
+};
+
 class Game {
 public:
     Game();
@@ -27,6 +33,12 @@ private:
     SDL_Window* mWindow;
     // 判断是否继续运行
     bool mIsRunning;
+    // 渲染器
+    SDL_Renderer* mRenderer;
+    // 球拍位置
+    Vector2 mPaddlePos;
+    // 球的位置
+    Vector2 mBallPos;
 };
 
 #endif //CHAPTER01_GAME_H
