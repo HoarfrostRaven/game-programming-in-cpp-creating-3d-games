@@ -11,6 +11,7 @@ Game::Game()
 :mWindow(nullptr)
 ,mRenderer(nullptr)
 ,mIsRunning(true)
+,mTicksCount(0)
 {}
 
 bool Game::Initialize() {
@@ -90,7 +91,22 @@ void Game::ProcessInput() {
     }
 }
 
-void Game::UpdateGame() {}
+void Game::UpdateGame() {
+    // 等到与上一帧间隔 16ms
+    while (!SDL_TICKS_PASSED(SDL_GetTicks(), mTicksCount + 16));
+
+    // 增量时间是上一帧到现在的时间差
+    // (转换成秒)
+    float deltaTime = (SDL_GetTicks() - mTicksCount) / 1000.0f;
+    // 更新运行时间(为下一帧)
+    mTicksCount = SDL_GetTicks();
+
+    // 固定增量时间最大值
+    if (deltaTime > 0.05f) {
+        deltaTime = 0.05f;
+    }
+}
+
 
 void Game::GenerateOutput() {
     // 设置 Tiffany 蓝

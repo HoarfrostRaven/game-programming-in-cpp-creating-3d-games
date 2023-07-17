@@ -39,6 +39,8 @@ private:
     Vector2 mPaddlePos;
     // 球的位置
     Vector2 mBallPos;
+    // 记录运行时间
+    Uint32 mTicksCount;
 };
 
 #endif //CHAPTER01_GAME_H
