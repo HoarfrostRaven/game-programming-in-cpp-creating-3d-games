@@ -41,6 +41,10 @@ private:
     Vector2 mBallPos;
     // 记录运行时间
     Uint32 mTicksCount;
+    // 球拍方向
+    int mPaddleDir;
+    // 球的速度
+    Vector2 mBallVel;
 };
 
 #endif //CHAPTER01_GAME_H
